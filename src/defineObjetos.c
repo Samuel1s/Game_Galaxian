@@ -1,16 +1,4 @@
-typedef struct Vetor_2d
-{
-    float x, y;
-
-}; 
-
-typedef struct Avatar
-{
-    int status_flag;
-    Vetor_2d posicao;
-    Vetor_2d dimensao;
-
-};
+#include "./library/criaObjetos.h"
 
 Avatar criaObjetos(float pos_x, float pos_y, float dim_x, float dim_y) 
 {

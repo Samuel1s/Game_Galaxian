@@ -1,5 +1,13 @@
 {
     "files.associations": {
-        "criainimigo.h": "c"
+        "criainimigo.h": "c",
+        "variaveisglobais.h": "c",
+        "criaobjetos.h": "c",
+        "teclado.h": "c",
+        "atualizajogo.h": "c",
+        "criamisseis.h": "c",
+        "criamissil.h": "c",
+        "telaprincipal.h": "c",
+        "criaheroi.h": "c"
     }
 }

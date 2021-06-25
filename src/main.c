@@ -2,29 +2,28 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
 
+#include "./library/teclado.h"
+#include "./library/colisao.h"
+#include "./library/criaHeroi.h"
+#include "./library/criaMissil.h"
+#include "./library/criaInimigo.h"
+#include "./library/criaObjetos.h"
+#include "./library/criaMisseis.h"
+#include "./library/atualizaJogo.h"
+#include "./library/telaPrincipal.h"
+#include "./library/variaveisGlobais.h"
 
-#include "criaObjetos.h"
-#include "criaObjetos.c"
-#include "criaHeroi.h"
-#include "criaHeroi.c"
-#include "criaInimigo.h"
-#include "criaInimigo.c"
-
-
-void desenhaMinhaCena() {
-    // cor para limpar a tela
-    glClearColor(1, 1, 1, 1);      
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glColor3f(1, 0, 0); 
-    criandoInimigos();   
-    desenhaNaveInimiga();
-    desenhaHeroi(50.0, 0.0);
-
-    glFlush();
-}
+#include "teclado.c"
+#include "colisao.c"
+#include "defineHeroi.c"
+#include "atualizaJogo.c"
+#include "defineMisseis.c"
+#include "defineInimigo.c"
+#include "defineObjetos.c"
+#include "telaPrincipal.c"
 
 void redimensionada(int width, int height)
 {
@@ -33,20 +32,16 @@ void redimensionada(int width, int height)
 
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
-   glOrtho(0, 100, 0, 100, -1.0, 1.0);
+   glOrtho(gl_world_begin_x, gl_world_end_x, gl_world_begin_y, gl_world_end_y, -1.0, 1.0);
 
    glMatrixMode(GL_MODELVIEW);
 }
 
-void teclaPressionada(unsigned char key, int x, int y)
-{
-    // ve qual tecla foi pressionada
-    switch(key)
-    {
-    case 27:      // Tecla "ESC"
-        exit(0);  // Sai da aplicacao
-        break;
-    }
+void setup() {
+    criandoInimigos(); 
+    
+    criandoVetorDeMisseis(misseis_nave_heroi);
+    criandoVetorDeMisseis(misseis_nave_inimigas);
 }
 
 int main(int argc, char **argv)
@@ -62,6 +57,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
     glutInitWindowSize(500, 500);
     glutInitWindowPosition(100, 100);
+    setup();
 
     // abre a janela
     glutCreateWindow("Galaxian - Teste");
@@ -70,8 +66,9 @@ int main(int argc, char **argv)
     glutDisplayFunc(desenhaMinhaCena);
     glutReshapeFunc(redimensionada);
     glutKeyboardFunc(teclaPressionada);
+    glutSpecialFunc(teclaEspecialPressionada);
+    glutTimerFunc(33, atualizaCena, 0);
     
-   
     // entra em loop e nunca sai
     glutMainLoop();
     return 0;

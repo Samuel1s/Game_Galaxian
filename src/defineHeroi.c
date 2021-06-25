@@ -1,31 +1,17 @@
 #include <stdio.h>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-#include "criaObjetos.h" 
 
-// Dimensao NAVE HEROI
-#define dim_x_nave_heroi 20
-#define dim_y_nave_heroi 20
+#include "./library/criaObjetos.h"
+#include "./library/variaveisGlobais.h"
 
-Avatar nave_heroi;
-
-GLuint id_Avatar_Heroi;
-
-int flag_vidas_restantes = 3;
-
-int placar = 0;
-float multiplicador_de_score = 0.01;
-
-void desenhaHeroi(float p_x, float p_y)
+void desenhaNaveHeroi(float p_x, float p_y)
 {
     nave_heroi = criaObjetos(p_x, p_y, dim_x_nave_heroi, dim_y_nave_heroi);
 
-    glColor4f(1.0, 0.0, 0.0, 0.0); // Cor Branca.
+    glColor4f(1.0, 0.0, 0.0, 0.0); // Cor Vermelha.
     // glEnable(GL_TEXTURE_2D);
     // glBindTexture(GL_TEXTURE_2D, id_Avatar_Heroi);
-    
-    // Vertices de posicionamento do jeito bom.
-    Vetor_2d h_v0, h_v1, h_v2, h_v3; 
 
     h_v0.x = -nave_heroi.dimensao.x/2;
     h_v0.y = -nave_heroi.dimensao.y/2;

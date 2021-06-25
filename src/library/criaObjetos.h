@@ -7,7 +7,7 @@ typedef struct cria_vetor_2d
 
 } Vetor_2d;
 
-typedef struct avatar
+typedef struct cria_avatar
 {
     int status_flag;
     Vetor_2d posicao;

@@ -1,27 +1,11 @@
 #include <stdio.h>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-#include "criaObjetos.h" 
-#include "criaHeroi.h"
 
-// Dimensao NAVE INIMIGA -> comp x larg
-#define dim_x_nave_inimiga 10
-#define dim_y_nave_inimiga 10
-
-// Posicao inicial e matriz de localizacao (quantidade) 
-#define pos_x_nave_inimiga 10
-#define pos_y_nave_inimiga 90
-#define M_I 4
-#define M_J 9
-
-// Criacao da matriz
-Avatar naves_inimigas[M_I][M_J];
-
-// Textura
-GLuint id_Avatar_Inimigo;
-
-// Contador de Mortes
-int flag_inimigos_mortos;
+#include "./library/teclado.h"
+#include "./library/criaHeroi.h" 
+#include "./library/criaObjetos.h"
+#include "./library/variaveisGlobais.h"
 
 void criandoInimigos() {
     float p_y = pos_y_nave_inimiga;
@@ -31,7 +15,7 @@ void criandoInimigos() {
         for (int j = 0; j  <  M_J; j++)
         {
             naves_inimigas[i][j] = criaObjetos(p_x, p_y, dim_x_nave_inimiga, dim_y_nave_inimiga);
-            p_x += pos_x_nave_inimiga * 2;  
+            p_x += pos_x_nave_inimiga;  
         }
         p_y -= (M_J + M_I/2); 
     }
@@ -45,14 +29,14 @@ void desenhaNaveInimiga()
         {
            if (flag_inimigos_mortos == (M_I * M_J)) 
            {
-                printf("Tela de Vencedor");
+                teclaPressionada(27, 1, 1); // Provisorio - Sera a de Tela Vencedor.
            }
 
            if (naves_inimigas[i][j].status_flag == 1)
            {
                 if (naves_inimigas[i][j].posicao.y < (fronteiraNaveHeroi()))
                 {
-                    printf("Tela game Over");
+                    printf("Tela game Over");  // Provisorio.
                 }
            }
            
@@ -61,8 +45,7 @@ void desenhaNaveInimiga()
         // glEnable(GL_TEXTURE_2D);
         // glBindTexture(GL_TEXTURE_2D, id_Avatar_Inimigo);
         
-        // Vertices de posicionamento do jeito bom.
-        Vetor_2d i_v0, i_v1, i_v2, i_v3; 
+        
 
         i_v0.x = -naves_inimigas[i][j].dimensao.x/2;
         i_v0.y = -naves_inimigas[i][j].dimensao.y/2;
