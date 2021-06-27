@@ -24,13 +24,14 @@ void movimentoNaveInimigaEixoY() {
   for(int i = 0; i < M_I ; i++)
   {
     // Numero aleatorio entre um intervalo: rand() % (max_number + 1 - minimum_number) + minimum_number
-    posicao_y_aleatoria = rand() % (3 + 1 - 1) + 1;
+    posicao_aleatoria = rand() % (3 + 1 - 1) + 1;
     for( int j = 0; j < M_J ; j++)
     {
-      naves_inimigas[i][j].posicao.y-= posicao_y_aleatoria;    
+      naves_inimigas[i][j].posicao.y-= posicao_aleatoria; 
+      naves_inimigas[i][j].posicao.x-= posicao_aleatoria + 1;   
     }
   }
-  posicao_y_aleatoria = 0;
+  posicao_aleatoria = 0;
 }
 
 void contoleMisseisInimigos()

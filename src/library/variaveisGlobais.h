@@ -78,7 +78,7 @@ GLuint id_Avatar_Inimigo;
 int flag_inimigos_mortos;
 int flag_muda_direcao_nave_inimiga = 1;
 int respawn_missil_inimigo = 0;
-int posicao_y_aleatoria = 0;
+int posicao_aleatoria = 0;
 
 /******************************************************************************
                           VARIAVEIS DOS MISSEIS
