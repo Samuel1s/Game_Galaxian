@@ -36,7 +36,7 @@ void desenhaNaveInimiga()
            {
                 if (naves_inimigas[i][j].posicao.y < (fronteiraNaveHeroi()))
                 {
-                    printf("Tela game Over");  // Provisorio.
+                    teclaPressionada(27, 1, 1); // Provisorio - Sera a de Tela game over.
                 }
            }
            

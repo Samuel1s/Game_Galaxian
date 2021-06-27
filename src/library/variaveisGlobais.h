@@ -98,4 +98,5 @@ int flag_controle_missil = 0;
 int limite_misseis = 0;
 
 
+int flag_muda_direcao_nave_inimiga = 1;
 #endif

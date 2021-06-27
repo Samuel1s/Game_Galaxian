@@ -66,6 +66,7 @@ int main(int argc, char **argv)
     glutDisplayFunc(desenhaMinhaCena);
     glutReshapeFunc(redimensionada);
     glutKeyboardFunc(teclaPressionada);
+    //glutKeyboardUpFunc(teclaPressionadaUp);
     glutSpecialFunc(teclaEspecialPressionada);
     glutTimerFunc(33, atualizaCena, 0);
     
