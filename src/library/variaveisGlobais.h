@@ -76,6 +76,9 @@ GLuint id_Avatar_Inimigo;
 
 // Controle
 int flag_inimigos_mortos;
+int flag_muda_direcao_nave_inimiga = 1;
+int respawn_missil_inimigo = 0;
+int posicao_y_aleatoria = 0;
 
 /******************************************************************************
                           VARIAVEIS DOS MISSEIS
@@ -97,6 +100,4 @@ Missil misseis_nave_inimigas[quantiddade_misseis_inimigos];
 int flag_controle_missil = 0;
 int limite_misseis = 0;
 
-
-int flag_muda_direcao_nave_inimiga = 1;
 #endif
