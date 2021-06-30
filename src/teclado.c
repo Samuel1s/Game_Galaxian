@@ -2,6 +2,7 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
+#include "./library/teclado.h"
 #include "./library/criaMisseis.h"
 #include "./library/atualizaJogo.h"
 #include "./library/telaPrincipal.h"

@@ -8,6 +8,12 @@
         "criamisseis.h": "c",
         "criamissil.h": "c",
         "telaprincipal.h": "c",
-        "criaheroi.h": "c"
+        "criaheroi.h": "c",
+        "soil.h": "c",
+        "glew.h": "c",
+        "freeglut.h": "c",
+        "carregatextura.h": "c",
+        "stdio.h": "c",
+        "math.h": "c"
     }
 }

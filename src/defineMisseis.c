@@ -1,9 +1,11 @@
+#include <stdio.h>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
 #include "./library/criaHeroi.h"
 #include "./library/criaMissil.h"
 #include "./library/criaObjetos.h"
+#include "./library/criaMisseis.h"
 #include "./library/variaveisGlobais.h"
 
 void desenhaMisseis(Missil * missil)

@@ -4,6 +4,7 @@
 
 #include "./library/teclado.h"
 #include "./library/criaHeroi.h" 
+#include "./library/criaInimigo.h"
 #include "./library/criaObjetos.h"
 #include "./library/variaveisGlobais.h"
 
@@ -41,11 +42,9 @@ void desenhaNaveInimiga()
            }
            
 
-        glColor3f (1, 0, 0);
-        // glEnable(GL_TEXTURE_2D);
-        // glBindTexture(GL_TEXTURE_2D, id_Avatar_Inimigo);
-        
-        
+        glColor4f(1.0, 1.0, 1.0, 1.0);
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, tx_Nave_Inimiga);
 
         i_v0.x = -naves_inimigas[i][j].dimensao.x/2;
         i_v0.y = -naves_inimigas[i][j].dimensao.y/2;
@@ -70,8 +69,7 @@ void desenhaNaveInimiga()
             glEnd();
         glPopMatrix();                  
         
-        // glDisable(GL_TEXTURE_2D);
-
+        glDisable(GL_TEXTURE_2D);
         }
     }
 }

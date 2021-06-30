@@ -1,13 +1,15 @@
+#include <time.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-#include <SOIL/SOIL.h>
 
 #include "./library/teclado.h"
 #include "./library/colisao.h"
 #include "./library/criaMissil.h"
 #include "./library/criaMisseis.h"
 #include "./library/criaObjetos.h"
+#include "./library/atualizaJogo.h"
 #include "./library/variaveisGlobais.h"
 
 void movimentoNaveInimigaEixoX(int value) {

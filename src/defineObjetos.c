@@ -1,3 +1,6 @@
+#include <stdio.h>
+#include <GL/glew.h>
+#include <GL/freeglut.h>
 #include "./library/criaObjetos.h"
 
 Avatar criaObjetos(float pos_x, float pos_y, float dim_x, float dim_y) 

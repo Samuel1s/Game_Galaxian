@@ -2,5 +2,6 @@
 #define _CRIA_HEROI_H_
 
 void desenhaNaveHeroi(float, float);
+float fronteiraNaveHeroi();
 
 #endif

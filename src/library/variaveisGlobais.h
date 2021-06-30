@@ -38,14 +38,14 @@ int gl_world_end_y = 100;
 Avatar nave_heroi;
 
 // Textura
-GLuint id_Avatar_Heroi;
+GLuint tx_Nave_Heroi;
 
 // Vertices de posicionamento da nave heroi.
 Vetor_2d h_v0, h_v1, h_v2, h_v3; 
 
 // Outros
 float posicao_heroi_x = 50.0;
-float posicao_heroi_y = 0.0;
+float posicao_heroi_y = 10.0;
 
 // Controle
 int flag_vidas_restantes = 3;
@@ -72,7 +72,7 @@ Avatar naves_inimigas[M_I][M_J];
 Vetor_2d i_v0, i_v1, i_v2, i_v3; 
 
 // Textura
-GLuint id_Avatar_Inimigo;
+GLuint tx_Nave_Inimiga;
 
 // Controle
 int flag_inimigos_mortos;
@@ -100,4 +100,11 @@ Missil misseis_nave_inimigas[quantiddade_misseis_inimigos];
 int flag_controle_missil = 0;
 int limite_misseis = 0;
 
+
+/******************************************************************************
+                          VARIAVEIS DAS TELAS
+*******************************************************************************/
+
+GLuint tx_Fundo_Jogo;
+GLuint tx_tela_Inicial;
 #endif

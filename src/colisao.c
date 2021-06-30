@@ -2,15 +2,14 @@
 #include <stdio.h>
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-#include <SOIL/SOIL.h>
 
 #include "./library/teclado.h"
+#include "./library/colisao.h"
 #include "./library/criaHeroi.h"
 #include "./library/criaMissil.h"
 #include "./library/criaObjetos.h"
 #include "./library/criaMisseis.h"
 #include "./library/variaveisGlobais.h"
-
 
 double calculoColisaoFronteira(Avatar nave_inimiga, Missil missil)
 {
