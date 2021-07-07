@@ -105,10 +105,13 @@ void controleMisseisHeroi()
 
 void atualizaCena()
 {  
-  controleMisseisHeroi();
-  contoleMisseisInimigos();
-  movimentaNaveInimiga();
-  glutPostRedisplay();
-      
-  glutTimerFunc(33, atualizaCena, 0);
+  
+  if (flag_status_pause != 1) 
+  {
+    controleMisseisHeroi();
+    contoleMisseisInimigos();
+    movimentaNaveInimiga();
+    glutPostRedisplay();
+  }
+    glutTimerFunc(33, atualizaCena, 0);
 }

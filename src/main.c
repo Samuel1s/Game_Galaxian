@@ -18,9 +18,18 @@
 
 void redimensionada(int width, int height)
 {
-   // left, bottom, right, top
-   glViewport(0, 0, width, height);
 
+   controle_razao_janela = (float)width/(float)height;
+   if (controle_razao_janela < 1) 
+   {
+       aspecto_tela_vertical = ((float)height - (float)width)/2;
+   } 
+   else 
+   {
+       aspecto_tela_horizontal = ((float)width - (float)height)/2;
+   }
+   // left, bottom, right, top
+   glViewport(aspecto_tela_horizontal, aspecto_tela_vertical, width, height);
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
    glOrtho(gl_world_begin_x, gl_world_end_x, gl_world_begin_y, gl_world_end_y, -1.0, 1.0);

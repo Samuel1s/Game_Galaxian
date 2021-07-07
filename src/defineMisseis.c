@@ -63,7 +63,7 @@ void criandoVetorDeMisseis(Missil * misseis)
       misseis[i].posicao_missil_y = 0;  
       misseis[i].dimensao_missil_x = 0.7;
       misseis[i].dimensao_missil_y = 0.7;
-      misseis[i].velocidade_missil = 0.1;
+      misseis[i].velocidade_missil = 1;
     }
 }
 

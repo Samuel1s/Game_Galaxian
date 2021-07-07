@@ -7,6 +7,7 @@
 #include "./library/criaInimigo.h"
 #include "./library/criaObjetos.h"
 #include "./library/variaveisGlobais.h"
+#include "./library/telaPrincipal.h"
 
 void criandoInimigos() {
     float p_y = pos_y_nave_inimiga;
@@ -37,7 +38,8 @@ void desenhaNaveInimiga()
            {
                 if (naves_inimigas[i][j].posicao.y < (fronteiraNaveHeroi()))
                 {
-                    teclaPressionada(27, 1, 1); // Provisorio - Sera a de Tela game over.
+                    desenhaTelaGameOver();
+                    
                 }
            }
            

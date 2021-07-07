@@ -28,6 +28,13 @@ int gl_world_begin_y = 0;
 int gl_world_end_y = 100;
 
 /******************************************************************************
+                     VARIAVEIS DE CONTROLE JOGO
+*******************************************************************************/
+float controle_razao_janela;
+float aspecto_tela_vertical;
+float aspecto_tela_horizontal;
+
+/******************************************************************************
                           VARIAVEIS DO HEROI
 *******************************************************************************/
 // Dimensao NAVE HEROI
@@ -83,7 +90,7 @@ int posicao_aleatoria = 0;
 /******************************************************************************
                           VARIAVEIS DOS MISSEIS
 *******************************************************************************/
-#define posicao_inicial_missil 10
+#define posicao_inicial_missil 15
 #define quantidade_misseis_heroi 12
 #define quantidade_misseis_criados 12
 #define quantiddade_misseis_inimigos 20
@@ -104,7 +111,19 @@ int limite_misseis = 0;
 /******************************************************************************
                           VARIAVEIS DAS TELAS
 *******************************************************************************/
-
 GLuint tx_Fundo_Jogo;
-GLuint tx_tela_Inicial;
+GLuint tx_Fundo_Tutorial;
+GLuint tx_Tela_Inicial;
+GLuint tx_Desenho_Mouse;
+GLuint tx_Desenho_Space;
+GLuint tx_Desenho_Enter;
+GLuint tx_Desenho_Arrows;
+GLuint tx_Desenho_A_D;
+
+int flag_status_start = 1;
+int flag_status_pause = -1;
+int flag_status_exit = -1;
+int flag_status_reset = 1;
+int flag_status_yes = -1;
+int flag_status_no = 1;
 #endif
