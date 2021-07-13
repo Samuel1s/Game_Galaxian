@@ -7,9 +7,9 @@ OpenGL + Linguagem C
 ## Instruções para instalação dos arquivos adicionais:
 Este jogo foi implementado no ambiente Linux e para compilar é necessário fazer a instalação das seguintes bibliotecas do OpenGL:
 
-FreeGlut
-Glew
-SOIL
+FreeGlut,
+Glew,
+SOIL,
 SDL
 
 ## Para instalação em ambiente Linux:
