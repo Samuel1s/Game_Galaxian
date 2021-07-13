@@ -28,36 +28,75 @@ int gl_world_begin_y = 0;
 int gl_world_end_y = 100;
 
 /******************************************************************************
-                     VARIAVEIS DE CONTROLE JOGO
+                          VARIAVEIS DO JOGO
 *******************************************************************************/
 float controle_razao_janela;
 float aspecto_tela_vertical;
 float aspecto_tela_horizontal;
 
+float calculo_aspecto_horizontal;
+float calculo_aspecto_vertical;
+
+Vetor_2d posicao_mouse;
+
+Mix_Music *musica_jogo = NULL;
+Mix_Music *musica_vencedor = NULL;
+
+int flag_verifica_musica = 1;
 /******************************************************************************
                           VARIAVEIS DO HEROI
 *******************************************************************************/
-// Dimensao NAVE HEROI
+// Dimensao NAVE HEROI.
 #define dim_x_nave_heroi 10
 #define dim_y_nave_heroi 10
+
+// Dimensao VIDA HEROI 'Corações'.
+#define dim_x_vida 8
+#define dim_y_vida 8
+
+// Dimensa COIN GANHA VIDA.
+#define dim_x_coin_vida 15
+#define dim_y_coin_vida 10
 
 // Definicao
 Avatar nave_heroi;
 
+// Show data vida - Display - o 10 é para ter espaço para redesenhar.
+Avatar display_vida[1][10];
+
+// Coin - Display 
+Avatar display_coin_vida;
+
 // Textura
 GLuint tx_Nave_Heroi;
+
+// Textura Vida Heroi
+GLuint tx_Desenho_Vida;
+
+// Textura coin vida
+GLuint tx_Desenho_Coin;
 
 // Vertices de posicionamento da nave heroi.
 Vetor_2d h_v0, h_v1, h_v2, h_v3; 
 
+// Vértices da vida do heroi.
+Vetor_2d v_v0, v_v1, v_v2, v_v3; 
+
+// Vértices da coin ganha vida.
+Vetor_2d c_v0, c_v1, c_v2, c_v3; 
+
 // Outros
 float posicao_heroi_x = 50.0;
 float posicao_heroi_y = 10.0;
+float p_x_vida_inicial= 10;
+float p_y_vida_inicial = 3;
+
+char placar_show_display[100];
 
 // Controle
-int flag_vidas_restantes = 3;
-int placar = 0;
-float multiplicador_de_placar = 0.01;
+float placar = 1.0;
+int flag_vidas_restantes = 2;
+float multiplicador_de_placar = -1.5;
 
 /******************************************************************************
                           VARIAVEIS DO INIMIGO
@@ -84,6 +123,7 @@ GLuint tx_Nave_Inimiga;
 // Controle
 int flag_inimigos_mortos;
 int flag_muda_direcao_nave_inimiga = 1;
+int flag_desenha_coin = 1;
 int respawn_missil_inimigo = 0;
 int posicao_aleatoria = 0;
 
@@ -126,4 +166,5 @@ int flag_status_exit = -1;
 int flag_status_reset = 1;
 int flag_status_yes = -1;
 int flag_status_no = 1;
+int flag_status_vencedor = -1;
 #endif

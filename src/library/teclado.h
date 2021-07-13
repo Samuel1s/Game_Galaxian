@@ -3,5 +3,6 @@
 
 void teclaPressionada(unsigned char , int , int );
 void teclaEspecialPressionada(int , int,  int );
+void movimentoMouse(int, int);
 
 #endif

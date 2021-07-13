@@ -24,15 +24,22 @@ void detectaColisaoNaveHeroi()
 {
   if(flag_vidas_restantes == 0)
   {
-    teclaPressionada(27, 1 , 1); // Finalizao do jogo.
+    desenhaTelaGameOver(); 
   }
-
-  for(int i = 0; i < quantiddade_misseis_inimigos; i++)
+  for(int i = 0; i < M_I; i++)
   {
-    if(calculoColisaoFronteira(nave_heroi, misseis_nave_inimigas[i])  < nave_heroi.dimensao.y/2)
+    for(int j = 0; j < M_J; j++)
     {
-      flag_vidas_restantes--;
-      misseis_nave_inimigas[i].posicao_missil_y = -50;
+      for(int i = 0; i < quantiddade_misseis_inimigos; i++)
+      {
+        if(calculoColisaoFronteira(nave_heroi, misseis_nave_inimigas[i])  < nave_heroi.dimensao.y/2)
+        {
+          flag_vidas_restantes--;
+          flag_inimigos_mortos++;
+          placar += naves_inimigas[i][j].posicao.y*multiplicador_de_placar;
+          misseis_nave_inimigas[i].posicao_missil_y = -50;
+        }
+      }
     }
   }
 }

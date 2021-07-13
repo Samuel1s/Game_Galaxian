@@ -4,8 +4,8 @@
 
 #include "./library/teclado.h"
 #include "./library/criaMisseis.h"
+#include "./library/telasDoJogo.h"
 #include "./library/atualizaJogo.h"
-#include "./library/telaPrincipal.h"
 #include "./library/variaveisGlobais.h"
 
 void teclaPressionada(unsigned char key, int x, int y)
@@ -16,6 +16,7 @@ void teclaPressionada(unsigned char key, int x, int y)
         case 27:      // Tecla "ESC"
             if (flag_status_exit == -1) 
             {
+                flag_status_pause *= 1;
                 flag_status_exit *= -1;
                 glutDisplayFunc(desenhaTelaConfirmacao); 
                 glutPostRedisplay();
@@ -53,6 +54,7 @@ void teclaPressionada(unsigned char key, int x, int y)
                 {
                     posicao_heroi_x = 50.0;
                     flag_status_start *= -1;
+                    flag_status_vencedor *= -1;
                     glutDisplayFunc(desenhaMinhaCena);
                     glutPostRedisplay();
                     flag_status_yes *=(-1);
@@ -82,6 +84,7 @@ void teclaPressionada(unsigned char key, int x, int y)
         case 13: //tecla ENTER
             flag_status_start = -1; 
             flag_status_pause *= -1;
+            flag_desenha_coin = -1;
             glutPostRedisplay();
             break;
 
@@ -150,4 +153,25 @@ void teclaEspecialPressionada(int key, int x, int y)
     default:
         break;
   }
+}
+
+void movimentoMouse(int x, int y)
+{
+    if(flag_status_pause == -1)
+    {
+      posicao_heroi_x = (float)x/5.0;
+
+      if(posicao_heroi_x <= gl_world_begin_x + (dim_x_nave_heroi/2.0))
+      {
+        posicao_heroi_x =  gl_world_begin_x + (dim_x_nave_heroi/2.0);
+      }
+      if(posicao_heroi_x >= gl_world_end_x - (dim_x_nave_heroi/2.0))
+      {
+        posicao_heroi_x = gl_world_end_x - (dim_x_nave_heroi/2.0);
+      }
+
+      posicao_mouse.x = posicao_heroi_x;
+      posicao_mouse.y = y;
+    }
+
 }

@@ -2,18 +2,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <GL/glew.h>
+#include <SDL/SDL.h>
 #include <GL/freeglut.h>
+#include <SDL/SDL_mixer.h>
 
 #include "./library/variaveisGlobais.h"
 
 #include "teclado.c"
 #include "colisao.c"
 #include "defineHeroi.c"
+#include "telasDoJogo.c"
 #include "atualizaJogo.c"
-#include "telaPrincipal.c"
 #include "defineInimigo.c"
 #include "defineMisseis.c"
 #include "defineObjetos.c"
+#include "carregaMusica.c"
 #include "carregaTextura.c"
 
 void redimensionada(int width, int height)
@@ -28,8 +31,13 @@ void redimensionada(int width, int height)
    {
        aspecto_tela_horizontal = ((float)width - (float)height)/2;
    }
+
+   /*Overwrite*/
+   calculo_aspecto_horizontal = aspecto_tela_horizontal/gl_world_end_x + controle_razao_janela;
+   calculo_aspecto_vertical = aspecto_tela_vertical/gl_world_end_y + controle_razao_janela;
+   
    // left, bottom, right, top
-   glViewport(aspecto_tela_horizontal, aspecto_tela_vertical, width, height);
+   glViewport(calculo_aspecto_horizontal, calculo_aspecto_vertical, width, height);
    glMatrixMode(GL_PROJECTION);
    glLoadIdentity();
    glOrtho(gl_world_begin_x, gl_world_end_x, gl_world_begin_y, gl_world_end_y, -1.0, 1.0);
@@ -47,6 +55,8 @@ int main(int argc, char **argv)
 {
     // acordando o GLUT
     glutInit(&argc, argv);
+    inicializarMusica();
+    carregarMusica();
 
     // definindo a versao do OpenGL que vamos usar
     glutInitContextVersion(1, 1);
@@ -59,13 +69,15 @@ int main(int argc, char **argv)
     setup();
 
     // abre a janela
-    glutCreateWindow("Galaxian - Teste");
+    glutCreateWindow("Galaxian - BETA");
 
     // registra callbacks para alguns eventos
     glutDisplayFunc(desenhaMinhaCena);
     glutReshapeFunc(redimensionada);
     glutKeyboardFunc(teclaPressionada);
     glutSpecialFunc(teclaEspecialPressionada);
+
+    glutPassiveMotionFunc(movimentoMouse);
     inicializaTextura();
     glutTimerFunc(33, atualizaCena, 0);
 

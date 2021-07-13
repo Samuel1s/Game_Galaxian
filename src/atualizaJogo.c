@@ -17,7 +17,7 @@ void movimentoNaveInimigaEixoX(int value) {
     {
     for( int j = 0; j < M_J; j++)
     {
-      naves_inimigas[i][j].posicao.x += value;
+      naves_inimigas[i][j].posicao.x += value * 0.8;
     }
   }
 }
@@ -29,7 +29,7 @@ void movimentoNaveInimigaEixoY() {
     posicao_aleatoria = rand() % (3 + 1 - 1) + 1;
     for( int j = 0; j < M_J ; j++)
     {
-      naves_inimigas[i][j].posicao.y-= posicao_aleatoria; 
+      naves_inimigas[i][j].posicao.y-= posicao_aleatoria * 1.3; 
       naves_inimigas[i][j].posicao.x-= posicao_aleatoria + 1;   
     }
   }
@@ -58,7 +58,7 @@ void contoleMisseisInimigos()
   }
 }
 
-// Que tal definir um timer com movimento
+// FIXME: Que tal definir um timer com movimento
 void movimentaNaveInimiga()
 {
   switch (flag_muda_direcao_nave_inimiga)
@@ -105,6 +105,11 @@ void controleMisseisHeroi()
 
 void atualizaCena()
 {  
+  /* A cada 2000 de pontos ganha uma vida extra */
+  if (placar > 2000) {
+    flag_vidas_restantes ++;
+    placar = 0;
+  }
   
   if (flag_status_pause != 1) 
   {

@@ -4,10 +4,10 @@
 
 #include "./library/teclado.h"
 #include "./library/criaHeroi.h" 
+#include "./library/telasDoJogo.h"
 #include "./library/criaInimigo.h"
 #include "./library/criaObjetos.h"
 #include "./library/variaveisGlobais.h"
-#include "./library/telaPrincipal.h"
 
 void criandoInimigos() {
     float p_y = pos_y_nave_inimiga;
@@ -31,7 +31,7 @@ void desenhaNaveInimiga()
         {
            if (flag_inimigos_mortos == (M_I * M_J)) 
            {
-                teclaPressionada(27, 1, 1); // Provisorio - Sera a de Tela Vencedor.
+                desenhaTelaVencedor();
            }
 
            if (naves_inimigas[i][j].status_flag == 1)
